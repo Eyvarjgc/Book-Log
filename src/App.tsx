@@ -6,26 +6,19 @@ import { Navbar } from './pages/Navbar'
 import { Outlet } from 'react-router';
 import { Search } from './components/Search';
 import { useLocation } from 'react-router'
-import { useNavigate } from 'react-router';
 import { LoginButton } from './components/LoginButton';
 import { useAppContext } from './hooks/useAppContext';
-import sideBar from '/public/sideBar.png'
 
 const VITE_API_URL = import.meta.env.VITE_API_URL 
 
 function App() {
-
-  const {tokenCredential, setUserInfo, userInfo,
-     userFavoriteError,
-    setUserFavoritError} = useAppContext()
   // const {data, loading, error, response} = useAuthApi()
+  // const [tokenError, setTokenError] = useState<string>('')
+  // const navigate = useNavigate()
 
-
-  const navigate = useNavigate()
+  const { setUserInfo, userInfo} = useAppContext()
   const [location, setLocation] = useState<string>('')
   const locationURL = useLocation()
-  const [tokenError, setTokenError] = useState<string>('')
-
   const [activeSideBar, setActiveSideBar] = useState<boolean>(false)
 
 
@@ -64,14 +57,15 @@ function App() {
   // },[])
 
 
-    useEffect(() => {
+  useEffect(() => {
     const fetchProfile = async() => {
       const token = localStorage.getItem("Token");
       
-      if(!token) {
-        setTokenError('No token');
-        return;
-      }
+      // if(!token) {
+      //   setTokenError('No token');
+      //   return;
+      // }
+
       try {
         
         const response = await axios.get(
@@ -86,7 +80,7 @@ function App() {
 
       } catch (error : any) {
         console.log(error.response?.data.data);
-        setTokenError(error.response?.data.data)
+        // setTokenError(error.response?.data.data)
         
 
       }
@@ -132,10 +126,7 @@ function App() {
   //   fetchToken()
   // },[tokenError || userFavoriteError])
 
-
   const splittedEmail = userInfo?.email.split("@")[0]
-
-  
 
   useEffect(() => {
     const newLocation = locationURL.pathname.split('/')[1]
@@ -159,7 +150,7 @@ function App() {
 
 
         <h1 className='font-black text-3xl leading-tight'>Books </h1>
-        <button className=""><img src={sideBar} alt="" onClick={() => setActiveSideBar((prev: boolean) => !prev)}
+        <button className=""><img src='./SideBar.png' alt="" onClick={() => setActiveSideBar((prev: boolean) => !prev)}
       className='w-10 p-1 rounded-xl hover:bg-gray-500/30
       hover:cursor-pointer  transition-all block md:hidden'  /></button>
 
@@ -171,7 +162,7 @@ function App() {
 
       {/* Right SIDE (Content) */}
       <div className={ activeSideBar == false ? ` transition-all min-h-dvh pl-4 pr-4 sm:pl-12 sm:pr-12 bg-orange-100 w-full h-full 
-       z-40`
+       z-40 `
 
         :  `min-h-dvh pl-4 pr-4 sm:pl-12 sm:pr-12 bg-orange-100 xl:w-4/5 h-full sm:ml-[20%] transition-all
          z-40`} >
@@ -197,7 +188,7 @@ function App() {
 
         </section>
 
-        <Search handleSideBar={setActiveSideBar} />
+        <Search setActiveSideBar={setActiveSideBar} />
 
         <Outlet />
 

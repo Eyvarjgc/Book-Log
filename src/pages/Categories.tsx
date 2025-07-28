@@ -2,15 +2,15 @@ import React, { useEffect } from "react"
 
 import { useAppContext } from "../hooks/useAppContext";
 import { useApiBooks } from "../hooks/useApiBooks";
-import { type BookType } from "../type" ;
 import { CategorySection } from "../components/CategorySection";
 import { useNavigate } from "react-router";
 
+import { type BookType } from "../type";
 const VITE_API_URL = import.meta.env.VITE_API_URL
 
 export const Categories : React.FC = ()  => {
   const {booksData, setBooksData} = useAppContext()
-  const {data: books} = useApiBooks<BookType[]>(`${VITE_API_URL}/books`)
+  const {data: books} = useApiBooks(`${VITE_API_URL}/books`)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,13 +18,13 @@ export const Categories : React.FC = ()  => {
     
   }, [books]);
 
-  const categoriesLabel = Array.from(
-    new Set(booksData?.map((item) => {return item.category}))
+  const categoriesLabel: string[] = Array.from(
+    new Set(booksData?.map((item: BookType ) => item.category) as string[])
   )
 
   return (
     <div className="mx-auto px-4">
-      {categoriesLabel.map((item) => {
+      {categoriesLabel.map((item ) => {
         return <>
             <span className="flex flex-row gap-2 items-center justify-between align-middle my-8 ">
           <h1 className="font-semibold text-2xl">{item}</h1>
@@ -35,7 +35,7 @@ export const Categories : React.FC = ()  => {
           </button>
         </span>
 
-          <CategorySection category={item} />
+          <CategorySection NameCategory={item as string} />
 
         </>
       })}

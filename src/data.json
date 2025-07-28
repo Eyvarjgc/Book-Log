@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "title": "1984",
+    "description": "A dystopian social science fiction novel and cautionary tale by George Orwell.",
+    "price": 19.99,
+    "discountPercentage": 10.0,
+    "rating": 4.8,
+    "stock": 42,
+    "brand": "Penguin Classics",
+    "category": "books",
+    "thumbnail": "https://covers.openlibrary.org/b/id/7222246-L.jpg",
+    "images": [
+      "https://covers.openlibrary.org/b/id/7222246-L.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "To Kill a Mockingbird",
+    "description": "A novel by Harper Lee, widely regarded as a masterpiece of American literature.",
+    "price": 14.5,
+    "discountPercentage": 12.5,
+    "rating": 4.7,
+    "stock": 30,
+    "brand": "Harper Perennial",
+    "category": "books",
+    "thumbnail": "https://covers.openlibrary.org/b/id/8228691-L.jpg",
+    "images": [
+      "https://covers.openlibrary.org/b/id/8228691-L.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Atomic Habits",
+    "description": "An easy & proven way to build good habits and break bad ones by James Clear.",
+    "price": 21.0,
+    "discountPercentage": 8.75,
+    "rating": 4.9,
+    "stock": 53,
+    "brand": "Avery",
+    "category": "books",
+    "thumbnail": "https://covers.openlibrary.org/b/id/10516529-L.jpg",
+    "images": [
+      "https://covers.openlibrary.org/b/id/10516529-L.jpg"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "The Hobbit",
+    "description": "Fantasy novel by J.R.R. Tolkien, introducing the world of Middle-earth.",
+    "price": 18.25,
+    "discountPercentage": 7.0,
+    "rating": 4.6,
+    "stock": 27,
+    "brand": "Houghton Mifflin Harcourt",
+    "category": "books",
+    "thumbnail": "https://covers.openlibrary.org/b/id/6979861-L.jpg",
+    "images": [
+      "https://covers.openlibrary.org/b/id/6979861-L.jpg"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Sapiens: A Brief History of Humankind",
+    "description": "A thought-provoking journey through human history by Yuval Noah Harari.",
+    "price": 25.0,
+    "discountPercentage": 9.0,
+    "rating": 4.7,
+    "stock": 38,
+    "brand": "Harper",
+    "category": "books",
+    "thumbnail": "https://covers.openlibrary.org/b/id/11153213-L.jpg",
+    "images": [
+      "https://covers.openlibrary.org/b/id/11153213-L.jpg"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "The Psychology of Money",
+    "description": "Timeless lessons on wealth, greed, and happiness by Morgan Housel.",
+    "price": 16.75,
+    "discountPercentage": 11.3,
+    "rating": 4.5,
+    "stock": 46,
+    "brand": "Harriman House",
+    "category": "books",
+    "thumbnail": "https://covers.openlibrary.org/b/id/10744927-L.jpg",
+    "images": [
+      "https://covers.openlibrary.org/b/id/10744927-L.jpg"
+    ]
+  }
+]

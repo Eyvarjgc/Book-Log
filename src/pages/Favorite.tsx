@@ -1,8 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 // import { useAuthApi } from "../hooks/useAuthApi";
 import { useNavigate } from "react-router";
 import { useAppContext } from "../hooks/useAppContext";
-import importImages from "../utils/ImportImages";
+
+import nofavorites from '../assets/noFavorites.png'
+import nofavoriteshided from '../assets/nofavoriteHided.png'
+
 
 export const Favorite : React.FC = () => {
   // const { data: books, loading, error } = useAuthApi('http://localhost:5000/books/favorite')
@@ -12,7 +15,7 @@ export const Favorite : React.FC = () => {
   
   const navigate = useNavigate()
 
-   const handleBookInfo = (e: React.MouseEvent<HTMLDivElement>, id : number) => {
+   const handleBookInfo = (e: React.MouseEvent<any>, id : number) => {
       e.preventDefault()
       navigate(`/books/bookInfo/${id}`)
   
@@ -36,13 +39,13 @@ export const Favorite : React.FC = () => {
               <p className="text-sm md:text-md text-gray-600 hidden sm:block">{book.books.description}</p>
 
               <button className="bg-orange-400 rounded-lg
-               px-2 py-0.5 md:px-3 md:py-1 mt-auto w-fit  font-semibold hover:cursor-pointer" onClick={(e) => handleBookInfo(e, book.books.ID)}>Read more</button>
+               px-2 py-0.5 md:px-3 md:py-1 mt-auto w-fit  font-semibold hover:cursor-pointer" onClick={(evt) => handleBookInfo(evt, book.books.ID)}>Read more</button>
 
 
             </span>
           </div>)) 
         :  <div className="flex flex-col items-center justify-center gap-4 w-full h-full  mt-8">
-          <img src={importImages.nofavorites} alt="" className="w-[150px] h-24 sm:w-[500px] sm:h-52"/>
+          <img src={nofavorites} alt="" className="w-[150px] h-24 sm:w-[500px] sm:h-52"/>
 
           <span className="font-medium text-sm sm:text-3xl leading-tight mt-8">
 
@@ -52,7 +55,7 @@ export const Favorite : React.FC = () => {
         </div> ) 
         
         : <div className="flex flex-col items-center justify-center gap-4 w-full h-full  mt-8">
-          <img src={importImages.nofavoriteshided} alt="" className="w-[150px] h-24 sm:w-[500px] sm:h-52"/>
+          <img src={nofavoriteshided} alt="" className="w-[150px] h-24 sm:w-[500px] sm:h-52"/>
 
           <span className="font-medium text-sm sm:text-3xl leading-tight mt-8">
 

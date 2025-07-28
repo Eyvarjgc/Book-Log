@@ -4,7 +4,7 @@ import axios from "axios";
 
 
 export function useApiBooks (url : string) {
-  const [data, setData] = useState(null)
+  const [data, setData] = useState<any>(null)
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string>()
 

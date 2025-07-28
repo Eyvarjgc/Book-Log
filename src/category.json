@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Science Fiction",
+    "description": "Explore futuristic worlds, space adventures, and advanced technologies.",
+    "slug": "science-fiction",
+    "image": "https://images.cdn1.buscalibre.com/fit-in/360x360/86/9f/869fa8cf3c087c954b6a3b7293c31469.jpg",
+    "icon": "🚀",
+    "bookCount": 120,
+    "featured": true
+  },
+  {
+    "id": 2,
+    "name": "Fantasy",
+    "description": "Dive into magical realms, mythical creatures, and epic quests.",
+    "slug": "fantasy",
+    "image": "https://ellector.com.pa/cdn/shop/files/9788445013946.jpg?v=1701992944",
+    "icon": "🐉",
+    "bookCount": 95,
+    "featured": true
+  },
+  {
+    "id": 3,
+    "name": "Mystery",
+    "description": "Uncover secrets, solve crimes, and follow gripping detective stories.",
+    "slug": "mystery",
+    "image": "https://upload.wikimedia.org/wikipedia/en/8/80/The_Girl_with_the_Dragon_Tattoo_Poster.jpg",
+    "icon": "🕵️‍♂️",
+    "bookCount": 80,
+    "featured": false
+  },
+  {
+    "id": 4,
+    "name": "Romance",
+    "description": "Feel the emotions of love, passion, and heartbreak in beautiful stories.",
+    "slug": "romance",
+    "image": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1681804503l/129915654.jpg",
+    "icon": "❤️",
+    "bookCount": 150,
+    "featured": true
+  },
+  {
+    "id": 5,
+    "name": "Non-Fiction",
+    "description": "Learn from real stories, facts, and valuable knowledge.",
+    "slug": "non-fiction",
+    "image": "https://m.media-amazon.com/images/I/61ZKK6Y1nFL.jpg",
+    "icon": "📘",
+    "bookCount": 200,
+    "featured": false
+  },
+  {
+    "id": 6,
+    "name": "Horror",
+    "description": "Experience chilling tales, supernatural events, and dark atmospheres.",
+    "slug": "horror",
+    "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1334416842i/830502.jpg",
+    "icon": "👻",
+    "bookCount": 60,
+    "featured": false
+  }
+]

@@ -9,7 +9,7 @@ const VITE_API_URL = import.meta.env.VITE_API_URL
 
 export const FavoriteProvider : React.FC<{children: React.ReactNode}> = ({children}) => {
     const [userFavorite, setUserFavorite] = useState<any[]>([])
-    const [userFavoriteError, setUserFavoritError] = useState()
+    const [userFavoriteError, setUserFavoritError] = useState<boolean>(false)
     const [userFavoriteLoading, setUserFavoriteLoading] = useState()
 
     const token = localStorage.getItem('Token')
@@ -61,7 +61,8 @@ export const FavoriteProvider : React.FC<{children: React.ReactNode}> = ({childr
 
   const removeFavorite  = async(ID : string) => {
     try {
-      const {data} = await axios.delete(`${VITE_API_URL}/books/removeFavorite/${ID}`,
+      
+      await axios.delete(`${VITE_API_URL}/books/removeFavorite/${ID}`,
         {
           headers: {Authorization: `Bearer ${token}`}
         }

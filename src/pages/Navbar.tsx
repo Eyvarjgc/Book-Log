@@ -10,10 +10,10 @@ import importImages from '../utils/ImportImages.tsx'
 
 
 export const Navbar : React.FC = () => {
-  const {setTokenCredential, tokenCredential, userInfo} = useAppContext()
+  const {setTokenCredential , userInfo} = useAppContext()
   
 
-  const [click, setClick] = useState()
+  const [click, setClick] = useState<boolean>(false)
   const handleLogout = () => {
     setTokenCredential(null)
     googleLogout()

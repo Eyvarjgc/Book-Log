@@ -15,7 +15,7 @@ export const Link : React.FC<LinkProps> = ({path, children, icon, alternativeIco
       {({isActive}) => (
 
         <div className="flex items-center align-middle gap-3  tracking-wide">
-          <img src={isActive ? alternativeIcon : icon} alt={children} className={
+          <img src={isActive ? alternativeIcon : icon} className={
             isActive ? "bg-orange-500 bg-opacity-50 rounded-xl p-2 w-8 h-8" 
             : "bg-gray-200 bg-opacity-50 rounded-xl p-2 w-8 h-8"
           } />

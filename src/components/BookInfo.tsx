@@ -8,10 +8,11 @@ const VITE_API_URL = import.meta.env.VITE_API_URL
 
 export const BookInfo : React.FC = () => {
   let {ID} = useParams()
-  
+
   const { data: books, loading, error } = useApiBooks(`${VITE_API_URL}/books/bookInfo/${ID}`)
-  const {addFavorite, userFavorite, removeFavorite, tokenCredential, userInfo} = useAppContext()
+  const {addFavorite, userFavorite, removeFavorite, userInfo} = useAppContext()
   const [isFavorite, setIsfavorite ]= useState<boolean>()
+
 
 
   const handleSaveClick = (ID : string) => {
@@ -82,6 +83,8 @@ export const BookInfo : React.FC = () => {
       <section className="flex flex-row flex-wrap gap-4  mt-8">
         {loading && <p>Loading...</p>}
         {error && <p>Error: {error}</p>}
+
+
 
         {books && (
            <div key={books.id} className="w-full h-full p-4 bg-white  rounded-lg 

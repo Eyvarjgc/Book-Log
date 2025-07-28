@@ -6,7 +6,9 @@ import { useNavigate } from "react-router";
 import img from '../assets/placeholder.png'
 import axios from "axios";
 
+
 const VITE_API_URL = import.meta.env.VITE_API_URL 
+
 
 export const Results : React.FC = () => {
   const { data: books, loading, error, setData } = useApiBooks('')
@@ -36,8 +38,7 @@ export const Results : React.FC = () => {
     
   }, [valueToSearch]) 
 
-  const handleBookInfo = (e: React.MouseEvent<HTMLDivElement>, id : number) => {
-    e.preventDefault()
+  const handleBookInfo = ( id : number) => {
     navigate(`/books/bookInfo/${id}`)
 
 
@@ -64,7 +65,7 @@ export const Results : React.FC = () => {
               <p className="text-gray-600">{book.description}</p>
 
               <button className="bg-orange-400 rounded-lg
-               px-3 py-1 mt-auto w-fit  font-semibold hover:cursor-pointer" onClick={(e) => handleBookInfo(e, book.ID)}>Read more</button>
+               px-3 py-1 mt-auto w-fit  font-semibold hover:cursor-pointer" onClick={() => handleBookInfo( book.ID)}>Read more</button>
 
 
             </span>

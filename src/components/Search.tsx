@@ -2,11 +2,15 @@ import React from "react";
 
 import importImages from "../utils/ImportImages";
 import { useNavigate } from "react-router";
-import sideBar from '/public/sideBar.png'
 
 // import { useAppContext } from "../hooks/useAppContext";
 
-export const Search : React.FC = ({ handleSideBar }) => {
+type Props = {
+  setActiveSideBar : React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const Search : React.FC<Props> = ({ setActiveSideBar }) => {
+
   // const { searchValue, setSearchValue } = useAppContext();
   const [searchInput, setSearchInput] = React.useState<string>('');
 
@@ -24,7 +28,7 @@ export const Search : React.FC = ({ handleSideBar }) => {
   return (
     <div className="flex flex-row gap-4 px-4 mt-4 sm:mt-0">
       {/* BUTTONs */}
-      <button className=""><img src={sideBar} alt="" onClick={() => handleSideBar((prev: boolean) => !prev)}
+      <button className=""><img src='./SideBar.png' alt="" onClick={() => setActiveSideBar((prev: boolean) => !prev)}
       className='w-10 p-1 rounded-xl hover:bg-gray-500/30
       hover:cursor-pointer  transition-all'  /></button>
 
@@ -32,7 +36,7 @@ export const Search : React.FC = ({ handleSideBar }) => {
       <form action="" className="w-4/5 sm:w-fit bg-white flex px-2 py-1 sm:px-8 sm:py-2 rounded-3xl flex-row 
         gap-12 items-center "
         
-        onSubmit={(e) => {
+        onSubmit={() => {
       if (searchInput.trim() !== '') {
         console.log(`/results/title=${searchInput}`);
         
@@ -46,7 +50,7 @@ export const Search : React.FC = ({ handleSideBar }) => {
       <span className="flex flex-row gap-2 items-center ">
         <img src={importImages.searchIcon} alt="" className="w-6 h-6 "/>
         <input type="text" placeholder="Add the name of the book you like" className="
-        focus:outline-none font-light placeholder:text-[10px] sm:placeholder:text-md lg:placeholder:text-[12px]" onChange={handleSearch} value={searchInput} />
+        focus:outline-none font-light placeholder:text-[10px] sm:placeholder:text-md lg:placeholder:text-[12px]" onChange={() => (handleSearch)} value={searchInput} />
       </span>
 
 

@@ -1,21 +1,16 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useAppContext } from "./useAppContext";
+import { useState } from "react";
 
 
 export function useAuthApi( ) {
   const [data, setData] = useState()
   const [error, setError] = useState()
-  const [loading, setLoading] = useState<boolean>()
-  const {setRefreshTokenCall} = useAppContext()
+  const [loading] = useState<boolean>()
 
 
   const token  = localStorage.getItem('Token')
   console.log(token);
 
-  if(!token){
-    
-  }
 
   const response = async(url : string, method : string) => {
     try {

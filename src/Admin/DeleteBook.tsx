@@ -30,7 +30,7 @@ export const DeleteBook: React.FC = () => {
       console.log(response);
       setValidateResponse(response?.data?.message)
 
-    } catch (error) {
+    } catch (error : any) {
       console.log(error.response);
       setValidateResponse(error?.response?.data?.error)
     }

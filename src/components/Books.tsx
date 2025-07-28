@@ -1,21 +1,22 @@
-
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useApiBooks } from "../hooks/useApiBooks";
-
 import Swiper from "swiper";
 import { Navigation, Pagination } from "swiper/modules";
-import "swiper/css"
-import "swiper/css/navigation"
-import "swiper/css/pagination"
+import { type BookType } from "../type";
 
-interface Props  {
-  data : []
+const VITE_API_URL = import.meta.env.VITE_API_URL
+
+type BookProps = {
+  data: BookType[]
 }
 
-export const Books : React.FC<Props> = ({data})  => {
+
+export const Books : React.FC<BookProps> = ( { data }  )  => {
+  console.log(data);
+  
   const navigate = useNavigate();
-  const {  loading, error } = useApiBooks()
+  const {  loading, error } = useApiBooks(`${VITE_API_URL}/books`)
 
 
     useEffect(() => {
@@ -75,17 +76,24 @@ export const Books : React.FC<Props> = ({data})  => {
 
           <div className="swiper-wrapper ">
             {data?.map((item, key) => (
-              <div className="swiper-slide" key={key} onClick={(e) => {handleBookInfo(e, item.ID)
-              }}>
-                <div className="w-full   overflow-hidden rounded-3xl">
-                  <img 
-                    src={item.thumbnail} 
-                    alt={`Book ${key + 1}`} 
-                    className="w-24 sm:w-32 md:w-64  lg:w-52 lg:h-80  xl:w-56   object-cover transition-all"
-                  />
-                </div>
-              </div>
-            ))}
+                          <div
+                            className="swiper-slide"
+                            key={key}
+                            onClick={(e) => {
+                              if (typeof item.ID === "number") {
+                                handleBookInfo(e, item.ID);
+                              }
+                            }}
+                          >
+                            <div className="w-full   overflow-hidden rounded-3xl">
+                              <img 
+                                src={item.thumbnail} 
+                                alt={`Book ${key + 1}`} 
+                                className="w-24 sm:w-32 md:w-64  lg:w-52 lg:h-80  xl:w-56   object-cover transition-all"
+                              />
+                            </div>
+                          </div>
+                        ))}
           </div>
         </div>
 

@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 const API_URL = import.meta.env.VITE_REDIRECT_URI;
-import { useGoogleLogin } from '@react-oauth/google';
+// import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios'
 
 import { useNavigate } from 'react-router';
 import { useAppContext } from '../hooks/useAppContext';
 
 export const Login : React.FC = () => {
-  const {tokenCredential, setTokenCredential, signCurrentState, setSignCurrentState } = useAppContext()
+  const { setTokenCredential, signCurrentState } = useAppContext()
   
-  const [userName, setUserName] = useState<string>();
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>("");
   const [errorHandle,setErrorHandle] = useState(null);
@@ -19,23 +18,23 @@ export const Login : React.FC = () => {
     const [PasswordError, setPasswordError] = useState<string>();
     const [emailError, setEmailError] = useState<string>();
 
-  const GoogleLogin = useGoogleLogin({
-    flow: 'auth-code',
-    onSuccess: async codeResponse => {
-        console.log(codeResponse);
-        const tokens = await fetch(
-            'http://localhost:5000/auth/google', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ code: codeResponse })
-            });
+  // const GoogleLogin = useGoogleLogin({
+  //   flow: 'auth-code',
+  //   onSuccess: async codeResponse => {
+  //       console.log(codeResponse);
+  //       const tokens = await fetch(
+  //           'http://localhost:5000/auth/google', {
+  //             method: 'POST',
+  //             headers: {
+  //               'Content-Type': 'application/json',
+  //             },
+  //             body: JSON.stringify({ code: codeResponse })
+  //           });
 
-        console.log(tokens);
-    },
-    onError: errorResponse => console.log(errorResponse),
-  });
+  //       console.log(tokens);
+  //   },
+  //   onError: errorResponse => console.log(errorResponse),
+  // });
 
   // Backend Login Function
   const Login = async() => {
@@ -83,7 +82,7 @@ export const Login : React.FC = () => {
     };
 
   const handleSubmit =  () => {
-    const isEmailValid = validateEmail(email)
+    const isEmailValid = validateEmail(email ?? '')
     const isPasswordValid = validatePassword(password)
 
     

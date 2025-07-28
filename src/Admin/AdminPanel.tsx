@@ -1,11 +1,9 @@
 import { Outlet } from "react-router"
-import { useAppContext } from "../hooks/useAppContext"
 import { useEffect } from "react"
 import { Link } from "../components/Navbar/Link"
 import importImages from "../utils/ImportImages"
 
 export const AdminPanel: React.FC = () => {
-  const { userInfo } = useAppContext()
 
   useEffect(() => {
     

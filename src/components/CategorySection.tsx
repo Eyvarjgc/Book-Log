@@ -1,20 +1,21 @@
 
 import Swiper from "swiper";
 import { Navigation, Pagination } from "swiper/modules";
-import "swiper/css"
-import "swiper/css/navigation"
-import "swiper/css/pagination"
+
 import { useNavigate } from "react-router";
 import { useAppContext } from "../hooks/useAppContext";
 
 import React, { useEffect } from "react";
 
+type Props = {
+  NameCategory : string
+}
 
-export const CategorySection : React.FC = (category : string)  => {
+export const CategorySection : React.FC<Props> = ({ NameCategory })  => {
   const {booksData} = useAppContext()
 
   const navigate = useNavigate();
-
+  
   // Slider working
     useEffect(() => {
        new Swiper('.swiper', {
@@ -57,19 +58,19 @@ breakpoints: {
       navigate(`/books/bookInfo/${id}`)
     }
 
-    const dataByCategory = booksData?.filter((item ) =>  {return item.category == category.category})  
+    const dataByCategory = booksData?.filter((item : any ) =>  {return item.category == NameCategory})  
 
   return (
     <div className="swiper w-full ">
 
       <div className="swiper-wrapper">
-        {dataByCategory?.map((item, key) => (
-          <div className="swiper-slide" key={key} onClick={(e) => {handleBookInfo(e, item.ID)
+        {dataByCategory?.map((item : any) => (
+          <div className="swiper-slide" key={item.ID} onClick={(e) => {handleBookInfo(e, item.ID)
           }}>
             <div className="w-full   overflow-hidden rounded-3xl">
               <img 
                 src={item.thumbnail} 
-                alt={`Book ${key + 1}`} 
+                alt={`Book ${item.ID}`} 
                 className="w-24 sm:w-32 md:w-56  lg:w-96 lg:h-80 xl:w-56  object-cover"
               />
             </div>
