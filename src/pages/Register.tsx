@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-const API_URL = import.meta.env.VITE_REDIRECT_URI;
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 import axios from 'axios'
 // import { useGoogleLogin } from '@react-oauth/google';
 
@@ -63,7 +63,7 @@ export const Register : React.FC = () => {
 
 
     try {
-      const response = await axios.post(`${API_URL}/register`, 
+      const response = await axios.post(`${VITE_API_URL}/register`, 
         {
           //  username:  userName,
             email: email,

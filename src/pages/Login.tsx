@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-const API_URL = import.meta.env.VITE_REDIRECT_URI;
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 // import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios'
 
@@ -39,7 +39,7 @@ export const Login : React.FC = () => {
   // Backend Login Function
   const Login = async() => {
     try {
-      const response = await axios.post(`${API_URL}/login`, { 
+      const response = await axios.post(`${VITE_API_URL}/login`, { 
         email: email,
         password: password
       }, {

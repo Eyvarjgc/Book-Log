@@ -13,7 +13,6 @@ type BookProps = {
 
 
 export const Books : React.FC<BookProps> = ( { data }  )  => {
-  console.log(data);
   
   const navigate = useNavigate();
   const {  loading, error } = useApiBooks(`${VITE_API_URL}/books`)
@@ -60,8 +59,8 @@ export const Books : React.FC<BookProps> = ( { data }  )  => {
       }) 
     }, [])
 
-    const handleBookInfo = (e : React.MouseEvent<HTMLDivElement>, id: number) => {
-        e.preventDefault();
+   const handleBookInfo = (e : React.MouseEvent<HTMLDivElement>, id: number) => {
+      e.preventDefault();
       navigate(`/books/bookInfo/${id}`)
     }
 
@@ -75,17 +74,13 @@ export const Books : React.FC<BookProps> = ( { data }  )  => {
         {error && <p>Error: {error}</p>}
 
           <div className="swiper-wrapper ">
-            {data?.map((item, key) => (
+            {data?.map((item : any, key) => (
                           <div
                             className="swiper-slide"
                             key={key}
-                            onClick={(e) => {
-                              if (typeof item.ID === "number") {
-                                handleBookInfo(e, item.ID);
-                              }
-                            }}
-                          >
-                            <div className="w-full   overflow-hidden rounded-3xl">
+                           onClick={(e) => {handleBookInfo(e, item.ID)
+          }}>
+                            <div className="w-full   overflow-hidden rounded-3xl hover:cursor-pointer">
                               <img 
                                 src={item.thumbnail} 
                                 alt={`Book ${key + 1}`} 
