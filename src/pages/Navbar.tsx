@@ -10,7 +10,7 @@ import importImages from '../utils/ImportImages.tsx'
 
 
 export const Navbar : React.FC = () => {
-  const {setTokenCredential , userInfo} = useAppContext()
+  const {setTokenCredential , userInfo,setUserInfo} = useAppContext()
   
 
   const [click, setClick] = useState<boolean>(false)
@@ -19,7 +19,7 @@ export const Navbar : React.FC = () => {
     googleLogout()
     localStorage.removeItem('Token')
     Cookies.remove('refresh_token')
-
+    setUserInfo(null)
     } 
 
   return (

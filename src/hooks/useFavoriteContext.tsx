@@ -23,7 +23,6 @@ export const FavoriteProvider : React.FC<{children: React.ReactNode}> = ({childr
         }
       )
 
-      console.log(data.data);
       
       setUserFavorite(data.data)
       
@@ -40,7 +39,6 @@ export const FavoriteProvider : React.FC<{children: React.ReactNode}> = ({childr
 
   const addFavorite = async(ID: string) => {
     try {
-      console.log(ID);
       
       const {data} = await axios.post(`${VITE_API_URL}/books/addFavorite/${ID}`, {},
         {
