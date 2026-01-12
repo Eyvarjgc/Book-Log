@@ -9,6 +9,7 @@ import { useLocation } from 'react-router'
 import { LoginButton } from './components/LoginButton';
 import { useAppContext } from './hooks/useAppContext';
 
+
 const VITE_API_URL = import.meta.env.VITE_API_URL 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
   const { setUserInfo, userInfo} = useAppContext()
   const [location, setLocation] = useState<string>('')
   const locationURL = useLocation()
-  const [activeSideBar, setActiveSideBar] = useState<boolean>(false)
+  const [activeSideBar, setActiveSideBar] = useState<boolean>(true)
 
 
   // Auth the user and Refresh token
@@ -151,7 +152,7 @@ function App() {
 
         <h1 className='font-black text-3xl leading-tight'>Books </h1>
         <button className=""><img src='./SideBar.png' alt="" onClick={() => setActiveSideBar((prev: boolean) => !prev)}
-      className='w-10 p-1 rounded-xl hover:bg-gray-500/30
+      className='w-10  rounded-xl hover:bg-gray-500/30
       hover:cursor-pointer  transition-all block md:hidden'  /></button>
 
       </div>

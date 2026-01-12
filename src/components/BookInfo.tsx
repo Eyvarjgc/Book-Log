@@ -18,6 +18,7 @@ export const BookInfo : React.FC = () => {
   const handleSaveClick = (ID : string) => {
     if(isFavorite){
       removeFavorite(ID)
+
     }else{
       addFavorite(ID)
 
@@ -26,6 +27,11 @@ export const BookInfo : React.FC = () => {
 
 
   useEffect(() => {
+    console.log(userFavorite.filter((item : any) => {
+      return item.ID === ID
+    }) )
+
+    console.log(userFavorite);
     
     const favoriteComp = userFavorite?.some((fav : any) => fav?.ID  === ID || fav?.book_id === ID )
     

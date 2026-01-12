@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createContext, useEffect } from "react";
 import { useState } from "react";
-
+import { v4 as uuidv4 } from 'uuid';
 
 export const FavoriteContext = createContext<any>(null)
 
@@ -22,9 +22,8 @@ export const FavoriteProvider : React.FC<{children: React.ReactNode}> = ({childr
           headers:{Authorization: `Bearer ${token}`}
         }
       )
-
-      
       setUserFavorite(data.data)
+      console.log(userFavorite);
       
 
     } catch (error) {
@@ -33,9 +32,14 @@ export const FavoriteProvider : React.FC<{children: React.ReactNode}> = ({childr
     }
   }
   
+
+
   useEffect(() => {
     fetchFavorites()
   }, [])
+
+  
+
 
   const addFavorite = async(ID: string) => {
     try {
@@ -46,9 +50,18 @@ export const FavoriteProvider : React.FC<{children: React.ReactNode}> = ({childr
         }
       )
 
-      console.log(data.data[0]);
       
-      setUserFavorite(prev => [...prev, data.data[0]])
+      
+
+
+     setUserFavorite(prev => [
+  ...prev,
+  {
+    ID: uuidv4(),
+    book_id: uuidv4(),
+    books: data.data[0]
+  }
+]);
       
 
     } catch (error : any) {
@@ -60,15 +73,16 @@ export const FavoriteProvider : React.FC<{children: React.ReactNode}> = ({childr
   const removeFavorite  = async(ID : string) => {
     try {
       
-      await axios.delete(`${VITE_API_URL}/books/removeFavorite/${ID}`,
+       await axios.delete(`${VITE_API_URL}/books/removeFavorite/${ID}`,
         {
           headers: {Authorization: `Bearer ${token}`}
         }
       )
       
+      console.log('Successfull deleted');
       
       setUserFavorite((prev : any[]) => prev.filter((item : any) => String(item.ID) !== String(ID)))
-      
+            
     } catch (error : any) {
       console.log(error);
       setUserFavoritError(true)

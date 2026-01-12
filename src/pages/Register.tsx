@@ -76,7 +76,6 @@ export const Register : React.FC = () => {
          }
       )
       console.log(response);
-      
       setTokenCredential(response.data.token)
       localStorage.setItem('Token', response.data.token)
       navigate('/')
@@ -112,7 +111,6 @@ export const Register : React.FC = () => {
     <div className='h-screen w-screen flex items-center justify-items-center bg-orange-100'>
     <div className='w-[90%] sm:w-1/3 h-fit mx-auto rounded-4xl px-12 py-6 bg-white shadow-2xl'>
       <h1 className='font-black text-4xl leading-tight text-center'>Create an account</h1> 
-
     {/* GOOGLE REGISTER DEACTIVATED */}
     {/* <button
             onClick={() => GoogleLogin()}

@@ -11,8 +11,11 @@ export const Favorite : React.FC = () => {
   // const { data: books, loading, error } = useAuthApi('http://localhost:5000/books/favorite')
   // const { data: books, loading, error, response } = useAuthApi()
 
+
   const { userFavorite, tokenCredential } = useAppContext()
   
+  
+
   const navigate = useNavigate()
 
    const handleBookInfo = (e: React.MouseEvent<any>, id : number) => {
@@ -26,20 +29,20 @@ export const Favorite : React.FC = () => {
     <div className="flex flex-row flex-wrap gap-4 mt-8">
       {tokenCredential ? (  userFavorite.length > 0 ? 
       userFavorite.map((book: any) => (
-          <div key={book.books.ID} className="w-full sm:w-[45%] bg-white p-4  rounded-lg
+          <div key={book?.books?.ID} className="w-full sm:w-[45%] bg-white p-4  rounded-lg
            shadow-md flex " >
 
-            <img src={book.books.thumbnail || '' } alt={book.books.title} className="w-40 h-36 sm:w-56 sm:h-48
+            <img src={book?.books?.thumbnail || '' } alt={book?.books?.title} className="w-40 h-36 sm:w-56 sm:h-48
              object-cover rounded-t-lg" />
 
             <span className="px-4 flex flex-col ">
-              <h2 className="text-md sm:text-xl font-bold">{book.books.title}</h2>
-              <p className="text-sm sm:text-md text-gray-500">{book.books.category}</p>
+              <h2 className="text-md sm:text-xl font-bold">{book?.books?.title}</h2>
+              <p className="text-sm sm:text-md text-gray-500">{book?.books?.category}</p>
               <p>Rating: {book.rating} </p>
-              <p className="text-sm md:text-md text-gray-600 hidden sm:block">{book.books.description}</p>
+              <p className="text-sm md:text-md text-gray-600 hidden sm:block">{book?.books?.description}</p>
 
               <button className="bg-orange-400 rounded-lg
-               px-2 py-0.5 md:px-3 md:py-1 mt-auto w-fit  font-semibold hover:cursor-pointer" onClick={(evt) => handleBookInfo(evt, book.books.ID)}>Read more</button>
+               px-2 py-0.5 md:px-3 md:py-1 mt-auto w-fit  font-semibold hover:cursor-pointer" onClick={(evt) => handleBookInfo(evt, book?.books?.ID)}>Read more</button>
 
 
             </span>
